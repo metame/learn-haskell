@@ -3,6 +3,7 @@
 module Ch2 where
 import Control.Exception (assert)
 
+check = assert True
 -- Chapter 2
 
 -- Comprehension Check
@@ -17,9 +18,9 @@ rpimes x = pi * x
 
 -- Exercises: Parentheses and Association
 -- Does parentheses change the result of the fns
--- 1. t 2. f 3. t
+-- 1. t 2. f 3. t:
 
--- assert (8+7*9 /= (8+7)*9) True 
+pac1 = (8+7*9 /= (8+7)*9) 
 
 
 -- Exercises: Heal the Sick
@@ -33,3 +34,18 @@ double x = x * 2
 x = 7
 y = 10
 f = x + y
+
+
+
+-- div/mod & quote/rem
+-- (quot x y)*y + (rem x y) = x
+-- (div x y)*y + (mod x y) = x
+
+quotRem x y = (quot x y)*y + (rem x y)
+divMod x y = (div x y)*y + (rem x y)
+
+-- these produce an unexpected behavior or returning ((quot x y),(rem x y))
+
+
+-- Exercises: A Head Code
+
