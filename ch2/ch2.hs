@@ -48,4 +48,41 @@ divMod x y = (div x y)*y + (rem x y)
 
 
 -- Exercises: A Head Code
+ahc1 = let x = 5 in x == 5
+ahc2 = let x = 5 in x * x == 25
+ahc3 = let x = 5; y = 6 in x * y == 30
+ahc4 = let x = 3; y = 1000 in x + 3 == 6
 
+-- using where
+ahcw1     = x * 3 + y
+  where x = 3
+        y = 1000
+
+ahcw2     = x * 5
+  where y = 10
+        x = 10 * 5 + y
+
+ahcw3     = z / x + y
+  where x = 7
+        y = negate x
+        z = y * 10
+
+ahcw1A = ahcw1 == 1009
+ahcw2A = ahcw2 == 300
+ahcw3A = ahcw3 == -17
+
+
+-- Chapter Excercises
+
+-- Parenthesization
+p1 = 2 + 2 * 3 - 1 == 2 + (2 * 3) - 1
+p2o = (^) 10 $ 1 + 1
+p2 = p2o == (^) 10 (1 + 1)
+p3 = 2 ^ 2 * 4 ^ 5 + 1 == ((2 ^ 2) * (4 ^ 5)) + 1
+
+-- Equivalent Expressions
+e1 = 1 + 1 == 2
+e2 = 10 ^ 2 == 10 + 9 * 10
+e3 = 400 - 37 /= (-) 37 400
+e4 = fromIntegral (100 `div` 3) /= 100 / 3
+e5 = 2 * 5 + 18 /= 2 * (5 + 18)
