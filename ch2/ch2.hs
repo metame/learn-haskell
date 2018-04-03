@@ -105,4 +105,3 @@ w4 = (-) waxOn 15 == 1110
 triple x = x * 3
 f3 = triple waxOn == waxOn * 3
 -- f6
-waxOff x = triple x
