@@ -86,3 +86,23 @@ e2 = 10 ^ 2 == 10 + 9 * 10
 e3 = 400 - 37 /= (-) 37 400
 e4 = fromIntegral (100 `div` 3) /= 100 / 3
 e5 = 2 * 5 + 18 /= 2 * (5 + 18)
+
+-- More fun with functions
+
+-- reorder so would eval in repl (well, I changed it into a closure to prevent multiple declarations)
+-- heh turns out this is f4 solution
+waxOn     = x * 5
+  where z = 7
+        y = z + 8
+        x = y ^ 2 
+
+-- f1
+w1 = 10 + waxOn == 1135
+w2 = (+10) waxOn == 1135
+w3 = (-) 15 waxOn == -1110
+w4 = (-) waxOn 15 == 1110
+
+triple x = x * 3
+f3 = triple waxOn == waxOn * 3
+-- f6
+waxOff x = triple x
