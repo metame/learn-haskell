@@ -89,12 +89,37 @@ recMul x y = go x y 0
 -- Fixing dividedBy
 --
 
+data DividedResult = Result Integer | DividedByZero deriving Show
+
+dividedBy :: Integral a => a -> a -> DividedResult
+dividedBy num denom = if denom == 0 then DividedByZero else Result $ go num denom 0
+  where go n   d count
+         | n < 0 && d < 0 = go (-n) (-d) count
+         | n < 0 = negate $ go (-n)   d  count
+         | d < 0 = negate $ go   n  (-d) count
+         | n < d = count
+         | otherwise = go (n - d) d (count + 1)
+
+
+dividedBy' :: Integral a => a -> a -> DividedResult
+dividedBy' _ 0 = DividedByZero
+dividedBy' num denom = Result $ go num denom 0
+  where go n d count
+         | n < 0 && d < 0 = go (-n) (-d) count
+         | n < 0 = negate $ go (-n)   d  count
+         | d < 0 = negate $ go   n  (-d) count
+         | n < d = count
+         | otherwise = go (n - d) d (count + 1)
 
 
 -- McCarthy 91 Function
 --
---
+mc91 :: Integral a => a -> a
+mc91 x
+    | x > 100 = x - 10
+    | otherwise = 91
 
+mc91' = \x -> if x > 100 then x - 10 else 91
 
 -- Numbers into kWord
 -- in ch8/WordNumber.hs
